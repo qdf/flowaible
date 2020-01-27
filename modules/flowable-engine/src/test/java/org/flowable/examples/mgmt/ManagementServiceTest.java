@@ -19,9 +19,9 @@ import java.util.Map;
 import org.flowable.common.engine.api.management.TableMetaData;
 import org.flowable.common.engine.impl.interceptor.Command;
 import org.flowable.common.engine.impl.interceptor.CommandContext;
+import org.flowable.common.engine.impl.persistence.entity.PropertyEntity;
 import org.flowable.engine.ManagementService;
 import org.flowable.engine.impl.context.Context;
-import org.flowable.engine.impl.persistence.entity.PropertyEntity;
 import org.flowable.engine.impl.test.PluggableFlowableTestCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
@@ -58,7 +58,7 @@ public class ManagementServiceTest extends PluggableFlowableTestCase {
             
         });
 
-        assertEquals(Long.valueOf(12), tableCount.get(tablePrefix + "ACT_GE_PROPERTY"));
+        assertEquals(Long.valueOf(13), tableCount.get(tablePrefix + "ACT_GE_PROPERTY"));
         assertEquals(Long.valueOf(0), tableCount.get(tablePrefix + "ACT_GE_BYTEARRAY"));
         assertEquals(Long.valueOf(0), tableCount.get(tablePrefix + "ACT_RE_DEPLOYMENT"));
         assertEquals(Long.valueOf(0), tableCount.get(tablePrefix + "ACT_RU_EXECUTION"));
@@ -77,7 +77,7 @@ public class ManagementServiceTest extends PluggableFlowableTestCase {
 
         TableMetaData tableMetaData = managementService.getTableMetaData(tablePrefix + "ACT_RU_TASK");
         assertEquals(tableMetaData.getColumnNames().size(), tableMetaData.getColumnTypes().size());
-        assertEquals(29, tableMetaData.getColumnNames().size());
+        assertEquals(30, tableMetaData.getColumnNames().size());
  
         int assigneeIndex = tableMetaData.getColumnNames().indexOf("ASSIGNEE_");
         int createTimeIndex = tableMetaData.getColumnNames().indexOf("CREATE_TIME_");
